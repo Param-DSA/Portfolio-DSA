@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Banner Section -->
+    <header class="banner"></header>
+
+    <!-- About Me Section -->
+    <section id="about" class="about section">
+        <h2>About Me</h2>
+        <p>I'm a 2nd-year student at SRM IST, pursuing a Bachelor of Technology in the field of Computer Science. I have a passion for web development and am currently expanding my skills in various web technologies. I'm continuously exploring new technologies and tools to expand my skills and stay updated in this ever-evolving field. Outside academics, I'm always excited to work on creative projects that challenge my problem-solving abilities and help me grow as a developer.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <h2>My Work</h2>
+        <div class="project-list">
+    
+            <!-- Project 1 -->
+            <div class="project">
+                <h3>Codechef</h3>
+                <img src="CodeChef_345.png" alt="Codechef Project Screenshot" width="300" height="200" class="thumbnail" onclick="openModal(this.src);">
+                <p>This is my Codechef test result for DSA.</p>
+            </div>
+    
+            <!-- Project 2 -->
+            <div class="project">
+                <h3>Hackerrank</h3>
+                <p><a href="Hackerrank - DSA.pdf" target="_blank">Hackerrank - PDF Documentation</a></p>
+                <p>Here are the questions I solved in the Hackerrank for DSA.</p>
+            </div>
+
+            <div class="project">
+                <h3>DSA E-lab</h3>
+                <img src="elab.png" alt="E-Lab Project Screenshot" width="300" height="200" class="thumbnail" onclick="openModal(this.src);">
+                <p>Here are the questions I solved in the E-lab for DSA, under these topics.</p>
+            </div>
+    
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+    
+
+    <!-- Modal for image expansion -->
+    <div id="imageModal" class="modal" onclick="closeModal();">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImg">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Contact Me Section -->
+    <section id="contact" class="contact section">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p><strong>Email ID:</strong> <a href="mailto:maheshwariparam2004@gmail.com">maheshwariparam2004@gmail.com</a></p>
+            <p><strong>Phone Number:</strong> 9636608169</p>
+            <p><strong>GitHub Link:</strong> <a href="https://github.com/Param-Maheshwari" target="_blank">https://github.com/Param-Maheshwari</a></p>
+            <p><strong>LinkedIn Link:</strong> <a href="https://www.linkedin.com/in/param-maheshwari-a758192b0/" target="_blank">https://www.linkedin.com/in/param-maheshwari-a758192b0/</a></p>
+        </div>
+    </section>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById("imageModal");
+            const expandedImg = document.getElementById("expandedImg");
+            expandedImg.src = src; // Set the source of the larger image
+            modal.style.display = "block"; // Show the modal
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none"; // Hide the modal
+        }
+
+        // Function to check if an element is in the viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to add the visible class to sections in viewport
+        function handleScroll() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                if (isInViewport(section)) {
+                    section.classList.add('visible');
+                } else {
+                    section.classList.remove('visible'); // Remove the class if not in viewport
+                }
+            });
+        }
+
+        // Event listener for scroll
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initial check in case the user starts at a scrolled position
+        handleScroll();
+    </script>
+
+</body>
+</html>
